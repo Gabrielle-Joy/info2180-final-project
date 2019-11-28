@@ -1,0 +1,33 @@
+* {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    word-wrap: break-word;
+}
+
+.container {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 2fr;
+}
+
+header {
+    grid-area: 1 / 1 / span 1 / span 3;
+    background-color: black;
+    padding: 10px;
+    color: white;
+}
+
+aside {
+    grid-area: 2 / 1 / span 3 / span 1;
+    background-color: #D5DFEF;
+    margin: 10px;
+    margin-left: 10px;
+}
+
+main {
+    grid-area: 2 / 2 / span 3 / span 2;
+    margin: 10px;
+}
+
+ul li {
+    list-style: none;
+}
