@@ -1,3 +1,8 @@
+<?php 
+    // session_destroy();
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +43,10 @@
             if ($result) {
                 if ($pwd_hashed === $result[0]['pwd']) {
                     //Login successful - Redirect to index.html
-                    header("Location: index.html");
+                    $_SESSION['loggedin'] = True;
+                    $_SESSION['timeout'] = time();
+                    $_SESSION['user'] = $email_san;
+                    header("Location: index.php");
                     exit;
                 } else {
                     $message = "<h3>Incorrect Email or Password</h3>";

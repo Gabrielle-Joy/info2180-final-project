@@ -1,3 +1,17 @@
+<?php 
+	session_start();
+	// var_dump($_SESSION);
+	if (!isset($_SESSION['loggedin'])) {
+		header("Location: login.php");
+		exit;
+	} elseif ((time() - $_SESSION['timeout']) > 10*60) {
+		//Log out after 10 minutes
+		session_destroy();
+		header("Location: login.php");
+		exit;
+	}
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -43,7 +57,7 @@
                     </li>
                     <li>
                         <i class="fas fa-power-off"></i>
-                        <a href="">Logout</a>
+                        <a href="php/logout.php">Logout</a>
                     </li>
                 </ul>
 		    </aside>
