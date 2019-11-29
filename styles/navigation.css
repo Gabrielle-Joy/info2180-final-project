@@ -1,0 +1,50 @@
+body{
+    margin: 0;
+}
+
+header{
+    margin: 0;
+    padding: 2em;
+    background-color: dodgerblue;
+    display: flex;
+    justify-content: center;
+}
+
+#content{
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 15% auto;
+}
+
+nav{
+    display: flex;
+    justify-content: flex-start;
+    /* align-items: center; */
+    background-color: darkgrey  ;
+    height: 100%;
+}
+
+nav > ul {
+    padding: 0.5em;
+}
+
+nav > ul > li {
+    list-style: none;
+    padding: 0.5em;
+}
+
+.nav-div {
+    display: flex;
+    vertical-align: center;
+    /* box-sizing: border-box; */
+}
+
+.nav-div > i {
+    width: auto;
+    padding-right: 0.75em;
+}
+
+.nav-div > div {
+    width:
+}
