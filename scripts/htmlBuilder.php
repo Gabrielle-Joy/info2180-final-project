@@ -25,6 +25,18 @@ function th($heading) {
     return "<th>{$heading}</th>";
 }
 
+function options($optionList) {
+    $options = "<option value selected disabled hidden>--select option--</option>";
+    foreach ($optionList as $value => $display) {
+        $options .= option($value, $display);
+    }
+    return $options;
+}
+
+function option($value, $display) {
+    return "<option value={$value}>{$display}</option>";
+}
+
 function alertError( $msg ) {
     echo "<script>alert({$msg})</alert>";
 }
