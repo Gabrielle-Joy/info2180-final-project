@@ -1,0 +1,7 @@
+label, input {
+    margin: 0.5em;
+}
+
+#login {
+    background-color: rgb(206, 205, 205);
+}
