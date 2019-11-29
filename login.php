@@ -15,9 +15,37 @@
     crossorigin="anonymous">
 </head>
 <?php
+    // Login Credentials for admindb
+    $username = 'bugmeboss';
+    $message = '';
+    // $host = 'localhost';
+    $host = getenv('IP');
+    $dbname = 'bugmedb';
+    $password = 'tracker';
     if ($_POST) {
         $email = $_POST["email"];
         $pwd = $_POST["password"];
+        if (strlen($email) < 50 && strlen($pwd) < 50) {
+            $email_san = filter_var($email, FILTER_SANITIZE_EMAIL);
+            $pwd_san = filter_var($pwd, FILTER_SANITIZE_STRING);
+            $pwd_hashed = md5($pwd_san);
+            // var_dump($pwd_hashed);
+            $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+            $stmt = $conn->query("SELECT password as pwd FROM users WHERE email='$email'");
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            // var_dump($result);
+            if ($result) {
+                if ($pwd_hashed === $result[0]['pwd']) {
+                    //Login successful - Redirect to index.html
+                    header("Location: index.html");
+                    exit;
+                } else {
+                    $message = "<h3>Incorrect Email or Password</h3>";
+                }
+            }
+        }
+
     } else {
         $email = "";
     }
@@ -44,7 +72,7 @@
             <input type="submit" value="Login">
         </form>
     </div>
-    <div id="messages"></div>
+    <div id="messages"><?=$message?></div>
     </main>
 
     
