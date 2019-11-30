@@ -1,0 +1,31 @@
+label, input {
+    margin: 0.5em;
+    display: inline-block;
+}
+
+label {
+    width: 5em;
+    display: none;
+}
+
+input {
+    border-radius: 5%;
+    height: 1.5em;
+    width: 20em;
+}
+
+#login {
+    background-color: rgb(206, 205, 205);
+    border-radius: 3%;
+    width: 25em;
+    height: 10em;
+    text-align: center;
+    margin: 0 auto;
+    
+}
+
+#messages {
+    width: 25em;
+    margin: 0 auto;
+    text-align: center;
+}
