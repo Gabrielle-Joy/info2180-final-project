@@ -38,7 +38,7 @@ function option($value, $display) {
 }
 
 function alertError( $msg ) {
-    echo "<script>alert({$msg})</alert>";
+    echo "<script>console.log({$msg});</script>";
 }
 
 

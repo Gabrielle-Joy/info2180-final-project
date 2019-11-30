@@ -1,11 +1,4 @@
--- MySQL dump 10.11
---
--- to install this database, from a terminal, type:
--- mysql -u USERNAME -p -h SERVERNAME world < world.sql
---
--- Host: localhost    Database: world
--- ------------------------------------------------------
--- Server version   5.0.45-log
+/*https://stackoverflow.com/questions/8940230/how-to-run-sql-script-in-mysql*/
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,39 +11,39 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-DROP DATABASE IF EXISTS admindb;
-CREATE DATABASE admindb;
-USE admindb;
+GRANT ALL PRIVILEGES ON bugmedb.* TO 'bugmeboss'@'localhost' IDENTIFIED BY 'tracker';
+DROP DATABASE IF EXISTS bugmedb;
+CREATE DATABASE bugmedb;
+USE bugmedb;
 
 --
--- Table structure for table `cities`
---
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL auto_increment,
-  `firstname` char(35) NOT NULL default '',
-  `lastname` char(35) NOT NULL default '',
-  `password` char(50) NOT NULL default '',
-  `email` char(50) NOT NULL default '',
-  `date_joined` date NOT NULL default '0',
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4080 DEFAULT CHARSET=utf8mb4;
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+  id int(11) NOT NULL auto_increment,
+  firstname varchar(35) NOT NULL default '',
+  lastname varchar(35) NOT NULL default '',
+  password varchar(50) NOT NULL default '',
+  email varchar(50) NOT NULL default '',
+  date_joined date NOT NULL,
+  PRIMARY KEY  (id)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 
+DROP TABLE IF EXISTS issues;
+CREATE TABLE issues (
+  id int(11) NOT NULL auto_increment,
+  title varchar(60) NOT NULL default '',
+  description varchar(100) NOT NULL default '',
+  type varchar(20) NOT NULL default '',
+  priority varchar(20) NOT NULL default '',
+  status varchar(20) NOT NULL default '',
+  assigned_to int(11) NOT NULL,
+  created_by int(11) NOT NULL,
+  created date NOT NULL,
+  updated date NOT NULL,
+  PRIMARY KEY  (id),
+  FOREIGN KEY (created_by) REFERENCES users(id)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
-
-DROP TABLE IF EXISTS `issues`;
-CREATE TABLE `issues` (
-  `id` int(11) NOT NULL auto_increment,
-  `title` char(60) NOT NULL default '',
-  `description` varchar(100) NOT NULL default '',
-  `type` char(20) NOT NULL default '',
-  `priority` char(20) NOT NULL default '',
-  `status` char(20) NOT NULL default '',
-  `assigned_to` int(11) NOT NULL,
-  `created_by` int(11) NOT NULL,
-  `created` date NOT NULL default '0',
-  `updated` date NOT NULL default '0',
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4080 DEFAULT CHARSET=utf8mb4;
+INSERT INTO users (firstname, lastname, password, email, date_joined) VALUES ('Admin','Katy',md5('Password123'),'admin@bugme.com', '2019-11-20');
