@@ -12,7 +12,7 @@ function issuesQuery(filter='') {
     }
 
     fetch(query).then(response => {
-        return response.text;
+        return response.text();
     }).then(data => {
         $("main").html(data);
     });

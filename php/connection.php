@@ -6,15 +6,18 @@ $dbname = 'bugmedb';
 $password = 'tracker';
 
 $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-function closeConnection($conn) {
+function closeConnection() {
+    global $conn;
     $conn = null;
 }
 
-function query( $conn, $query, $many=false) {
+function query($query, $many=false) {
+    global $conn;
     $stmt = $conn->query($query);
-    if ( many ) {
+    $stmt->execute();
+    if ($many) {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } else {
         return $stmt->fetch();
