@@ -1,5 +1,6 @@
-// import validate_password from 'validate_password.js';
-
+/** This Function pre-validates the password before submitting to the server.
+ * If a password doesn't meet this basic regex, then it can't be a valid password 
+ * */ 
 function login_check(password) {
     console.log("P:" + password.value);
     good = validate_password(password.value);

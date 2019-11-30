@@ -21,7 +21,7 @@
 </head>
 <?php
     // If already logged in, redirect to index.php
-    if ($_SESSION['loggedin'])
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'])
         header("Location: index.php");
 
     // Login Credentials for admindb

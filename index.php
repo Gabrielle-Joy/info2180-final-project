@@ -4,8 +4,8 @@
 	if (!isset($_SESSION['loggedin'])) {
 		header("Location: login.php");
 		exit;
-	} elseif ((time() - $_SESSION['timeout']) > 10*60) {
-		//Log out after 10 minutes
+	} elseif ((time() - $_SESSION['timeout']) > 20*60) {
+		// Log out after 20 minutes
 		session_destroy();
 		header("Location: login.php");
 		exit;

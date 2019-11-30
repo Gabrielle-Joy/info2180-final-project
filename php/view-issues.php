@@ -47,7 +47,7 @@ function filterIssues ( $conn, $filter, $id=null ) {
 function makeResponse( $results ) {
     $htmlresponse = "";
     $headings = ["Ticket ID", "Title", "Type", "Status", "Assigned To", "Created"];
-    $dbfields = ["id", "title", "type", "status", "Assined_to", "created"];
+    $dbfields = ["id", "title", "type", "status", "assigned_to", "created_by"];
 
     $table_headings = table_headings($headings);
   
