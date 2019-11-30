@@ -10,6 +10,7 @@
 		header("Location: login.php");
 		exit;
 	}
+	$_SESSION['timeout'] = time();
 ?>
 
 <!DOCTYPE html>
