@@ -67,6 +67,21 @@ function makeResponse( $results ) {
     return table("{$table_headings}{$table_data}");
 }
 
+?>
+
+<div>
+    <h1>Issues</h1>
+    <button id="new-issue-btn"> Create New Issue</button>
+</div>
+<div id="filter-select">
+    <p>Filter by: </p>
+    <button id="all" onclick="issuesQuery()">ALL</button>
+    <button id="open" onclick="issuesQuery('open')">OPEN</button>
+    <button id="my" onclick="issuesQuery('my')">MY TICKETS</button>
+</div>
+<br>
+
+<?php
 handleRequest();
 
 ?>

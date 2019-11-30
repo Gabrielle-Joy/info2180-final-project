@@ -64,7 +64,7 @@
 		    </aside>
 		    
 		    <main>
-		        <h1>New User</h1>
+		        <!-- <h1>New User</h1>
 		        
 		        <form>
 		            <label for="fname">Firstname</label>
@@ -80,7 +80,7 @@
 		            <input type="text" name="email" value=""/>
 		            
 		            <input type="submit" value="Submit"/>
-		        </form>
+		        </form> -->
 		    </main>
 		    
 	    </div>
