@@ -2,6 +2,7 @@ let display = $("#display");
 let baseURL = "http://localhost:8080/";
 
 $( document ).ready(function() {
+    login();
     goHome();
     initNav();
 });
@@ -15,6 +16,10 @@ function initNav() {
     $("#add-user").click(addUser);
     $("#new-issue").click(createIssue);
     $("#logout").click(logout);
+}
+
+function login() {
+    
 }
 
 function goHome() {
