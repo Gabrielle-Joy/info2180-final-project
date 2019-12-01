@@ -22,13 +22,20 @@ function viewDetailedIssue(id) {
 }
 
 function createIssue() {
-    let url = "../forms/create-issue.php";
+    const url = "../forms/create-issue.php";
+    display(url);
+}
+
+function addUser() {
+    const url = "../php/add-user.php";
+    console.log("add user");
     display(url);
 }
 
 function logout() {
-    let url = "../php/logout.php";
-    display(url);
+    const url = "../php/logout.php";
+    window.location = url;
+    // display(url);
 }
 
 function display(url) {
@@ -41,8 +48,9 @@ function display(url) {
 
 function initNav() {
     $("#home").click(issuesQuery);
+    $("#user").click(addUser);
     $("#issue").click(createIssue);
-    $("#logout")
+    $("#logout").click(logout);
 }
 
 function markAsClosed(id) {
