@@ -1,10 +1,10 @@
 <?php
-
+require("sessionTest.php");
 require("connection.php");
 require("htmlBuilder.php");
 
 $basequery = "SELECT i.id, title, type, status, concat(firstname, ' ', lastname) as assigned_to, 
-concat(firstname, ' ', lastname) as created_by FROM issues i JOIN users u ON i.id = u.id";
+created FROM issues i JOIN users u ON i.assigned_to = u.id";
 
 function handleRequest() {
     global $basequery;
@@ -12,7 +12,7 @@ function handleRequest() {
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $queries = array_filter($_GET);
         if ( isset($queries["filter"]) ) {
-            filterIssues($queries["filter"], $id=$queries["id"]);
+            filterIssues($queries["filter"], $id=$_SESSION["user"]);
         } else {
             viewAllIssues();
         }
@@ -25,6 +25,7 @@ function viewAllIssues() {
     global $basequery;
     $results = query($basequery, $many=true);
     $response = makeResponse($results);
+    // print_r($results);
 
     echo $response;
 }
@@ -32,16 +33,17 @@ function viewAllIssues() {
 function filterIssues ($filter, $id=null ) {
     global $basequery;
     // set where clause based on filter
-    $where =( $filter === "open") ? "WHERE status = {$filter}" : 
-            ( $filter === "my") ? "WHERE assigned_to = {$id}" : "";
+    // echo "Filter: $filter ";
+    $where = ( $filter == "open") ? "WHERE status = '{$filter}'" : "";
+    $where = ( $filter == "my") ? "WHERE assigned_to = {$id}" : $where;
     if ( $where != "" ) {
         $sqlquery = $basequery . " {$where}";
-        $results = query($sqlquery, $many=true );
+        // echo $sqlquery;
+        $results = query($sqlquery, $many=true);
         $response = makeResponse($results);
     } else {
         alertError("Invalid filter");
     }
-    
     
     echo $response;
 }
@@ -49,7 +51,7 @@ function filterIssues ($filter, $id=null ) {
 function makeResponse( $results ) {
     $htmlresponse = "";
     $headings = ["Ticket ID", "Title", "Type", "Status", "Assigned To", "Created"];
-    $dbfields = ["id", "title", "type", "status", "assigned_to", "created_by"];
+    $dbfields = ["id", "title", "type", "status", "assigned_to", "created"];
 
     $table_headings = table_headings($headings);
   

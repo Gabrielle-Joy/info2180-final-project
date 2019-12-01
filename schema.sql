@@ -49,3 +49,5 @@ CREATE TABLE issues (
 INSERT INTO users (firstname, lastname, password, email, date_joined) VALUES ('Admin','Katy',md5('Password123'),'admin@bugme.com', '2019-11-20');
 INSERT INTO issues (title, description, type, priority, status, assigned_to, created_by, created, updated) VALUES 
   ("PHP Login Not Working", "The PHP page won't let a person sign in even with valid credentials","Bug", "Major", "OPEN", 1, 1, CURDATE(), CURDATE());
+  INSERT INTO issues (title, description, type, priority, status, assigned_to, created_by, created, updated) VALUES 
+  ("Setting up Detailed Issue View", "When a user clicks on the issue, a detailed description is brought up","Proposal", "Medium", "IN PROGRESS", 1, 1, CURDATE(), CURDATE());
