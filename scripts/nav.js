@@ -17,3 +17,20 @@ function issuesQuery(filter='') {
         $("main").html(data);
     });
 }
+
+function viewDetailedIssue(id) {
+    let url = "../php/detailed-issue.php?id=" + id;
+    fetch(url).then(response => {
+        return response.text();
+    }).then(data => {
+        $("main").html(data);
+    });
+}
+
+function markAsClosed(id) {
+    console.log("I hear yah. Close it");
+}
+
+function markInProgress(id) {
+    console.log("I hear yah. In Progress");
+}

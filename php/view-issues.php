@@ -53,7 +53,7 @@ function makeResponse( $results ) {
     $headings = ["Ticket ID", "Title", "Type", "Status", "Assigned To", "Created"];
     $dbfields = ["id", "title", "type", "status", "assigned_to", "created"];
 
-    $table_headings = table_headings($headings);
+    $table_headings = table_headings($headings, "tbl-head");
   
     $table_data = "";
     
@@ -63,7 +63,7 @@ function makeResponse( $results ) {
             $row_data .= td($row[$field]);
             //var_dump($row_data);
         }
-        $table_data .= tr($row_data);
+        $table_data .= tr($row_data,$id=$row["id"]);
     }
 
     return table("{$table_headings}{$table_data}");
