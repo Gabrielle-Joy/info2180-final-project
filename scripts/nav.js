@@ -13,7 +13,7 @@ function issuesQuery(filter='') {
     if(filter){
         query += "?filter=" + filter;
     }
-    display(url);
+    display(query);
 }
 
 function viewDetailedIssue(id) {
