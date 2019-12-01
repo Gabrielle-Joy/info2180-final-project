@@ -47,7 +47,7 @@ function display(url) {
 }
 
 function initNav() {
-    $("#home").click(issuesQuery);
+    $("#home").click(() => {issuesQuery()});
     $("#user").click(addUser);
     $("#issue").click(createIssue);
     $("#logout").click(logout);

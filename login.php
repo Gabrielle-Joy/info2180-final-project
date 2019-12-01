@@ -25,10 +25,11 @@
         header("Location: index.php");
 
     // Login Credentials for admindb
+    $message = '';
     require("php/connection.php");
     /*
     $username = 'bugmeboss';
-    $message = '';
+    
     // $host = 'localhost';
     $host = getenv('IP');
     $dbname = 'bugmedb';
