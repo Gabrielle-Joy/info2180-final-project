@@ -1,5 +1,5 @@
 <?php
-require("php\sessionTest.php");
+require("php/sessionTest.php");
 ?>
 
 <!DOCTYPE html>
@@ -33,19 +33,19 @@ require("php\sessionTest.php");
 		    
 		    <aside>
 		        <ul>
-                    <li>
+                    <li id="home">
                         <i class="fas fa-home"></i>
-                        <a href="">Home</a>
+                        <a>Home</a>
                     </li>
-                    <li>
+                    <li id="user">
                         <i class="fas fa-user-plus"></i>
                         <a href="">Add User</a>
                     </li>
-                    <li>
+                    <li id="issue">
                         <i class="fas fa-plus-circle"></i>
                         <a href="">New Issue</a>
                     </li>
-                    <li>
+                    <li id="logout">
                         <i class="fas fa-power-off"></i>
                         <a href="php/logout.php">Logout</a>
                     </li>

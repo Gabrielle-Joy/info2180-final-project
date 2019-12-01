@@ -28,6 +28,18 @@ function th($heading) {
     return "<th>{$heading}</th>";
 }
 
+function options( $opList ) {
+    $result = option("", "-- select here --");
+    foreach ($opList as $value => $msg) {
+        $result .= option($value, $msg);
+    }
+    return $result;
+}
+
+function option( $value, $msg ) {
+    return "<option value={$value}>{$msg}</option>";
+}
+
 function alertError( $msg ) {
     echo "<script>console.log({$msg});</script>";
 }

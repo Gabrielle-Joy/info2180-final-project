@@ -2,6 +2,9 @@ $(document).ready(() =>{
     // When page first loaded, get the issues log
     issuesQuery();
 
+    // init nav links
+    initNav();
+
 });
 
 function issuesQuery(filter='') {
@@ -10,21 +13,36 @@ function issuesQuery(filter='') {
     if(filter){
         query += "?filter=" + filter;
     }
+    display(url);
+}
 
-    fetch(query).then(response => {
+function viewDetailedIssue(id) {
+    let url = "../php/detailed-issue.php?id=" + id;
+    display(url);
+}
+
+function createIssue() {
+    let url = "../forms/create-issue.php";
+    display(url);
+}
+
+function logout() {
+    let url = "../php/logout.php";
+    display(url);
+}
+
+function display(url) {
+    fetch(url).then(response => {
         return response.text();
     }).then(data => {
         $("main").html(data);
     });
 }
 
-function viewDetailedIssue(id) {
-    let url = "../php/detailed-issue.php?id=" + id;
-    fetch(url).then(response => {
-        return response.text();
-    }).then(data => {
-        $("main").html(data);
-    });
+function initNav() {
+    $("#home").click(issuesQuery);
+    $("#issue").click(createIssue);
+    $("#logout")
 }
 
 function markAsClosed(id) {

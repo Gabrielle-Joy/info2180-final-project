@@ -25,12 +25,15 @@
         header("Location: index.php");
 
     // Login Credentials for admindb
+    require("php/connection.php");
+    /*
     $username = 'bugmeboss';
     $message = '';
     // $host = 'localhost';
     $host = getenv('IP');
     $dbname = 'bugmedb';
     $password = 'tracker';
+    */
     if ($_POST) {
         $email = $_POST["email"];
         $pwd = $_POST["password"];
@@ -39,7 +42,7 @@
             $pwd_san = filter_var($pwd, FILTER_SANITIZE_STRING);
             $pwd_hashed = md5($pwd_san);
             // var_dump($pwd_hashed);
-            $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+            // $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
             $stmt = $conn->query("SELECT id, password as pwd FROM users WHERE email='$email'");
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

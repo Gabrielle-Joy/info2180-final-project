@@ -11,7 +11,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-GRANT ALL PRIVILEGES ON bugmedb.* TO 'bugmeboss'@'localhost' IDENTIFIED BY 'tracker';
+-- GRANT ALL PRIVILEGES ON bugmedb.* TO 'bugmeboss'@'localhost' IDENTIFIED BY 'Tracker123';
 DROP DATABASE IF EXISTS bugmedb;
 CREATE DATABASE bugmedb;
 USE bugmedb;

@@ -73,7 +73,7 @@ function makeResponse( $results ) {
 
 <div>
     <h1>Issues</h1>
-    <button id="new-issue-btn"> Create New Issue</button>
+    <button id="new-issue-btn" onclick="createIssue()">Create New Issue</button>
 </div>
 <div id="filter-select">
     <p>Filter by: </p>
