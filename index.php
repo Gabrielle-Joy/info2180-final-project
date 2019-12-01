@@ -1,16 +1,5 @@
-<?php 
-	session_start();
-	// var_dump($_SESSION);
-	if (!isset($_SESSION['loggedin'])) {
-		header("Location: login.php");
-		exit;
-	} elseif ((time() - $_SESSION['timeout']) > 20*60) {
-		// Log out after 20 minutes
-		session_destroy();
-		header("Location: login.php");
-		exit;
-	}
-	$_SESSION['timeout'] = time();
+<?php
+require("php\sessionTest.php");
 ?>
 
 <!DOCTYPE html>
@@ -64,7 +53,7 @@
 		    </aside>
 		    
 		    <main>
-		        <h1>New User</h1>
+		        <!-- <h1>New User</h1>
 		        
 		        <form>
 		            <label for="fname">Firstname</label>
@@ -80,7 +69,7 @@
 		            <input type="text" name="email" value=""/>
 		            
 		            <input type="submit" value="Submit"/>
-		        </form>
+		        </form> -->
 		    </main>
 		    
 	    </div>

@@ -40,7 +40,7 @@
             $pwd_hashed = md5($pwd_san);
             // var_dump($pwd_hashed);
             $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
-            $stmt = $conn->query("SELECT password as pwd FROM users WHERE email='$email'");
+            $stmt = $conn->query("SELECT id, password as pwd FROM users WHERE email='$email'");
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             // var_dump($result);
@@ -49,7 +49,7 @@
                     //Login successful - Redirect to index.html
                     $_SESSION['loggedin'] = True;
                     $_SESSION['timeout'] = time();
-                    $_SESSION['user'] = $email_san;
+                    $_SESSION['user'] = $result[0]['id'];                    
                     header("Location: index.php");
                     exit;
                 } else {
