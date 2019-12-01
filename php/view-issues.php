@@ -4,7 +4,7 @@ require("connection.php");
 require("htmlBuilder.php");
 
 $basequery = "SELECT i.id, title, type, status, concat(firstname, ' ', lastname) as assigned_to, 
-created FROM issues i JOIN users u ON i.assigned_to = u.id";
+DATE(created) as created FROM issues i JOIN users u ON i.assigned_to = u.id";
 
 function handleRequest() {
     global $basequery;
@@ -53,7 +53,7 @@ function makeResponse( $results ) {
     $headings = ["Ticket ID", "Title", "Type", "Status", "Assigned To", "Created"];
     $dbfields = ["id", "title", "type", "status", "assigned_to", "created"];
 
-    $table_headings = table_headings($headings);
+    $table_headings = table_headings($headings, "tbl-head");
   
     $table_data = "";
     
@@ -63,7 +63,7 @@ function makeResponse( $results ) {
             $row_data .= td($row[$field]);
             //var_dump($row_data);
         }
-        $table_data .= tr($row_data);
+        $table_data .= tr($row_data,$id=$row["id"]);
     }
 
     return table("{$table_headings}{$table_data}");
@@ -73,7 +73,7 @@ function makeResponse( $results ) {
 
 <div>
     <h1>Issues</h1>
-    <button id="new-issue-btn"> Create New Issue</button>
+    <button id="new-issue-btn" onclick="createIssue()">Create New Issue</button>
 </div>
 <div id="filter-select">
     <p>Filter by: </p>

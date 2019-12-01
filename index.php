@@ -1,5 +1,5 @@
 <?php
-require("php\sessionTest.php");
+require("php/sessionTest.php");
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +11,8 @@ require("php\sessionTest.php");
 		<title>BugMe Issue Tracker</title>
 
 		<link href="style.css" type="text/css" rel="stylesheet" />
+		<!-- <link rel="stylesheet" href="styles/nav.css"> -->
+		<!-- <link rel="stylesheet" href="styles/style.css"> -->
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
@@ -20,58 +22,38 @@ require("php\sessionTest.php");
 	</head>
 
 	<body>
-	    <div id="container">
-	        
-	        <header>
-                <ul>
-                    <li id="header">
-                        <i class="fas fa-bug"></i>
-                        BugMe Issue Tracker
-                    </li>
-                </ul>
-		    </header>
-		    
-		    <aside>
-		        <ul>
-                    <li>
-                        <i class="fas fa-home"></i>
-                        <a href="">Home</a>
-                    </li>
-                    <li>
-                        <i class="fas fa-user-plus"></i>
-                        <a href="">Add User</a>
-                    </li>
-                    <li>
-                        <i class="fas fa-plus-circle"></i>
-                        <a href="">New Issue</a>
-                    </li>
-                    <li>
-                        <i class="fas fa-power-off"></i>
-                        <a href="php/logout.php">Logout</a>
-                    </li>
-                </ul>
-		    </aside>
-		    
-		    <main>
-		        <!-- <h1>New User</h1>
-		        
-		        <form>
-		            <label for="fname">Firstname</label>
-		            <input type="text" name="fname" value=""/>
-		            
-		            <label for="lname">Lastname</label>
-		            <input type="text" name="lname" value=""/>
-		            
-		            <label for="password">Password</label>
-		            <input type="text" name="password" value=""/>
-		            
-		            <label for="email">Email</label>
-		            <input type="text" name="email" value=""/>
-		            
-		            <input type="submit" value="Submit"/>
-		        </form> -->
-		    </main>
-		    
-	    </div>
+		<div class="grid-container">
+			<header>
+				<ul>
+					<li id="header">
+						<i class="fas fa-bug"></i>
+						BugMe Issue Tracker
+					</li>
+				</ul>
+			</header>
+			
+				<nav>
+					<ul>
+						<li id="home" class="nav-div">
+							<i class="fas fa-home"></i>
+							Home
+						</li>
+						<li id="user" class="nav-div">
+							<i class="fas fa-user-plus"></i>
+							Add User
+						</li>
+						<li id="issue" class="nav-div">
+							<i class="fas fa-plus"></i>
+							New Issue
+						</li>
+						<li id="logout" class="nav-div">
+							<i class="fas fa-sign-out-alt"></i>
+							Logout
+						</li>
+					</ul>
+				</nav>
+				<main id="display"></main>
+			
+		</div>
 	</body>
 </html>

@@ -17,11 +17,11 @@ function query($query, $many=false) {
     global $conn;
     $stmt = $conn->query($query);
     $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    // if ($many) {
-    //     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    // } else {
-    //     return $stmt->fetch();
-    // }
+    // return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if ($many) {
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } else {
+        return $stmt->fetch();
+    }
 }
 ?>

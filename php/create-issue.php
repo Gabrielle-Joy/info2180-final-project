@@ -1,7 +1,6 @@
 <?php
 
 require("connection.php");
-require("htmlBuilder.php");
 
 $basequery = "INSERT INTO issues (title, description, type, priority, status, assigned_to, created_by, created, updated) 
                 VALUES (:title, :description, :type, :priority, :status, :assigned_to, :created_by, :created, :updated)";
@@ -37,3 +36,5 @@ function handleRequest( $conn ) {
 }
 
 ?>
+
+
