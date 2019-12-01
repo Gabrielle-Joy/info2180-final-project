@@ -76,7 +76,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             ':date_joined'       => $current_date,
         ];
         $statement->execute($params);
-        echo "<meta http-equiv='refresh' content='0'>";
+        // echo "<meta http-equiv='refresh' content='0'>";
+        header("Location: ../index.php");
     } else {
         alertError("Invalid request type");
     }
