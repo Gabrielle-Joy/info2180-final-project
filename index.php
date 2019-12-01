@@ -38,10 +38,12 @@ require("php/sessionTest.php");
 							<i class="fas fa-home"></i>
 							Home
 						</li>
+						<?php if ($_SESSION['session_type'] == 'admin') : ?>
 						<li id="user" class="nav-div">
 							<i class="fas fa-user-plus"></i>
 							Add User
 						</li>
+						<?php endif; ?>
 						<li id="issue" class="nav-div">
 							<i class="fas fa-plus"></i>
 							New Issue

@@ -27,9 +27,18 @@ function createIssue() {
 }
 
 function addUser() {
-    const url = "../php/add-user.php";
+    const url = "../forms/add-user.php";
     console.log("add user");
     display(url);
+}
+
+function validateUser() {
+    let valid = true;
+    
+    if (valid) {
+        const url
+        display
+    }
 }
 
 function logout() {
@@ -38,12 +47,20 @@ function logout() {
     // display(url);
 }
 
-function display(url) {
-    fetch(url).then(response => {
-        return response.text();
-    }).then(data => {
-        $("main").html(data);
-    });
+function display(url, data="") {
+    if (data) {
+        // POST request
+
+
+    } else {
+        // GET request
+        fetch(url).then(response => {
+            return response.text();
+        }).then(data => {
+            $("main").html(data);
+        });
+    }
+    
 }
 
 function initNav() {

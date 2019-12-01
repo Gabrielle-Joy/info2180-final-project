@@ -53,7 +53,10 @@
                     //Login successful - Redirect to index.html
                     $_SESSION['loggedin'] = True;
                     $_SESSION['timeout'] = time();
-                    $_SESSION['user'] = $result[0]['id'];                    
+                    $_SESSION['user'] = $result[0]['id'];  
+                    if( $email == "admin@bugme.com") {
+                        $_SESSION['session_type'] = 'admin';
+                    }                      
                     header("Location: index.php");
                     exit;
                 } else {
