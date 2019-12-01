@@ -40,8 +40,8 @@ CREATE TABLE issues (
   status varchar(20) NOT NULL default '',
   assigned_to int(11) NOT NULL,
   created_by int(11) NOT NULL,
-  created date NOT NULL,
-  updated date NOT NULL,
+  created datetime NOT NULL,
+  updated datetime NOT NULL,
   PRIMARY KEY  (id),
   FOREIGN KEY (created_by) REFERENCES users(id)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
@@ -49,6 +49,6 @@ CREATE TABLE issues (
 INSERT INTO users (firstname, lastname, password, email, date_joined) VALUES ('Admin','Katy',md5('Password123'),'admin@bugme.com', '2019-11-20');
 --  INSERT INTO users (firstname, lastname, password, email, date_joined) VALUES ('William','Tell',md5('Archery456'),'willtell@bugme.com', '2019-11-30');
 INSERT INTO issues (title, description, type, priority, status, assigned_to, created_by, created, updated) VALUES 
-  ("PHP Login Not Working", "The PHP page won't let a person sign in even with valid credentials","Bug", "Major", "OPEN", 1, 1, CURDATE(), CURDATE());
+  ("PHP Login Not Working", "The PHP page won't let a person sign in even with valid credentials","Bug", "Major", "OPEN", 1, 1, NOW(), NOW());
   INSERT INTO issues (title, description, type, priority, status, assigned_to, created_by, created, updated) VALUES 
-  ("Setting up Detailed Issue View", "When a user clicks on the issue, a detailed description is brought up","Proposal", "Medium", "IN PROGRESS", 1, 1, CURDATE(), CURDATE());
+  ("Setting up Detailed Issue View", "When a user clicks on the issue, a detailed description is brought up","Proposal", "Medium", "IN PROGRESS", 1, 1, NOW(), NOW());

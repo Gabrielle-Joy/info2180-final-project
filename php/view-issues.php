@@ -4,7 +4,7 @@ require("connection.php");
 require("htmlBuilder.php");
 
 $basequery = "SELECT i.id, title, type, status, concat(firstname, ' ', lastname) as assigned_to, 
-created FROM issues i JOIN users u ON i.assigned_to = u.id";
+DATE(created) as created FROM issues i JOIN users u ON i.assigned_to = u.id";
 
 function handleRequest() {
     global $basequery;
