@@ -11,35 +11,39 @@ $errors = [
     "email"     => "",
     "password"  => ""
 ];
+
 $fnError=$lnError=$pError=$emError="";
+
+$contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+
 if($_SERVER["REQUEST_METHOD"]=="POST"){
-    if(empty($_POST["Fname"])){
+    if(empty($_POST["firstname"])){
         $fnError="Must Enter Your First Name";
     }
     else{
-        $Fname=data_input($_POST["Fname"]);
+        $Fname=data_input($_POST["firstname"]);
         filter_var($Fname,FILTER_SANITIZE_STRING);
         if(!ctype_alpha($Fname)){
         $Fname='';
         $fnError="Only letters should be entered";
         }
     }
-    if(empty($_POST["Lname"])){
+    if(empty($_POST["lastname"])){
         $lnError="Must Enter Your Last Name";
     }
     else{
-        $Lname=data_input($_POST["Lname"]);
+        $Lname=data_input($_POST["lastname"]);
         filter_var($Lname,FILTER_SANITIZE_STRING);
         if(!ctype_alpha($Lname)){
         $lnError="Only letters should be entered";
         $Lname='';
         }
     }
-    if(empty($_POST["Email"])){
+    if(empty($_POST["email"])){
         $emError="Must Enter Your Email";
     }
     else{
-        $Email=data_input($_POST["Email"]);
+        $Email=data_input($_POST["email"]);
         $stmt=$conn->prepare("SELECT * FROM users WHERE email=?");
         $stmt->execute([$Email]);
         $user=$stmt->fetch();
@@ -52,12 +56,12 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         $Email='';
         }
     }
-    if(empty($_POST["Pass"])){
+    if(empty($_POST["password"])){
         $pError="Must Enter a Password";
     }
     else{
-        $Pass=data_input($_POST["Pass"]);
-        if(strlen($_POST["Pass"])<8){
+        $Pass=data_input($_POST["password"]);
+        if(strlen($_POST["password"])<8){
         $pError="Password must have at least 8 characters and 1 Number and 1 Capital Letter";
         $Pass='';
         }
@@ -92,24 +96,21 @@ function wipeErrors(){
 
 function submit_info($conn){
     global $statement;
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $data = array_filter($_POST);
-        $statement->bindParam(':firstname', $data["Fname"]);
-        $current_date = date("Y-m-d");
-        $pass_hash=md5($data['Pass']);
-        $params = [
-            ':firstname'    => $data['Fname'],
-            ':lastname'     => $data['Lname'],
-            ':password'     => $pass_hash,
-            ':email'        => $data['Email'],
-            ':date_joined'  => $current_date,
-        ];
-        $statement->execute($params);
-        // echo "<meta http-equiv='refresh' content='0'>";
-        header("Location: ../index.php");
-    } else {
-        require("../php/htmlBuilder.php");
-        alertError("Invalid request type");
-    }
+    $data = array_filter($_POST);
+    $statement->bindParam(':firstname', $data["firstname"]);
+    $current_date = date("Y-m-d");
+    $pass_hash=md5($data['password']);
+    $params = [
+        ':firstname'    => $data['firstname'],
+        ':lastname'     => $data['lastname'],
+        ':password'     => $pass_hash,
+        ':email'        => $data['email'],
+        ':date_joined'  => $current_date,
+    ];
+    $statement->execute($params);
+    // echo "<meta http-equiv='refresh' content='0'>";
+    // header("Location: ../index.php");
 }
 ?>
+
+<h1> ERROR </h1>

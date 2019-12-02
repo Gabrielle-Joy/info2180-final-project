@@ -9,6 +9,15 @@ if (isset($_SESSION["errors"])) {
     $fnError = $lnError = $pError = $emError = "";
 }
 
+if (isset($_SESSION["form"])) {
+    $Fname = $_SESSION["form"]["firstname"];
+    $Lname = $_SESSION["form"]["lastname"];
+    $Pass = $_SESSION["form"]["passowrd"];
+    $Email = $_SESSION["form"]["email"];
+}
+
+
+
 $action = "../php/add-user.php";
 ?>
 
