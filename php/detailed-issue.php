@@ -29,7 +29,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $status = $results1['status'];
     $assignedTo = $results1['assigned_to'];
     $created = $results1['created'];
+    $created = date_create_from_format("Y-m-d H:i:s", $created);
+    $created = date(" F j, Y \a\\t h:i:s A", $created->getTimestamp());
     $updated = $results1['updated'];          
+    $updated = date_create_from_format("Y-m-d H:i:s", $updated);
+    $updated = date(" F j, Y \a\\t h:i:s A", $updated->getTimestamp());
 }
 ?>
 
@@ -55,6 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     <p><?=$status?></p>
 </div>
 <div>
-    <button onclick="markAsClosed(<?=$id?>)">Mark as Closed</button>
-    <button onclick="markInProgress(<?=$id?>)">Mark as In Progress</button>
+    <button onclick="updateIssue(<?=$id?>, 'CLOSED')">Mark as Closed</button>
+    <button onclick="updateIssue(<?=$id?>, 'IN PROGRESS')">Mark as In Progress</button>
 </div>

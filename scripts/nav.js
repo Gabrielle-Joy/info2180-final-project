@@ -21,6 +21,16 @@ function viewDetailedIssue(id) {
     display(url);
 }
 
+function updateIssue(id, update){
+    let url = "../php/update-issue.php";
+    let data = {'id': id, 'update': update}
+    fetch(url,{
+        method: 'POST',
+        body: JSON.stringify(data)
+    });
+    viewDetailedIssue(id);
+}
+
 function createIssue() {
     const url = "../forms/create-issue.php";
     display(url);
@@ -28,7 +38,7 @@ function createIssue() {
 
 function addUser() {
     const url = "../php/add-user.php";
-    console.log("add user");
+    // console.log("add user");
     display(url);
 }
 
@@ -53,10 +63,3 @@ function initNav() {
     $("#logout").click(logout);
 }
 
-function markAsClosed(id) {
-    console.log("I hear yah. Close it");
-}
-
-function markInProgress(id) {
-    console.log("I hear yah. In Progress");
-}
