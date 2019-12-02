@@ -21,6 +21,16 @@ function viewDetailedIssue(id) {
     display(url);
 }
 
+function updateIssue(id, update){
+    let url = "../php/update-issue.php";
+    let data = {'id': id, 'update': update}
+    fetch(url,{
+        method: 'POST',
+        body: JSON.stringify(data)
+    });
+    viewDetailedIssue(id);
+}
+
 function createIssue() {
     const url = "../forms/create-issue.php";
     display(url);
