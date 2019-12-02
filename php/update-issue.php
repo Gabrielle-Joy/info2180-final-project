@@ -1,5 +1,5 @@
 <?php
-require("sessionTest.php");
+require("valid-session.php");
 require("connection.php"); 
 
 $basequery = "UPDATE issues SET status = :stat, updated = NOW() WHERE id = :id";

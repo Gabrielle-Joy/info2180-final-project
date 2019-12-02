@@ -24,6 +24,8 @@ function viewDetailedIssue(id) {
 function updateIssue(id, update){
     let url = "../php/update-issue.php";
     let data = {'id': id, 'update': update}
+    console.log(url);
+    console.log("Let's Roll");
     fetch(url,{
         method: 'POST',
         body: JSON.stringify(data)
@@ -148,12 +150,4 @@ function formData(list) {
         fd.append(i,list[i]);
     }
     return fd;
-}
-
-function markAsClosed(id) {
-    console.log("I hear yah. Close it");
-}
-
-function markInProgress(id) {
-    console.log("I hear yah. In Progress");
 }
