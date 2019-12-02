@@ -25,9 +25,9 @@ foreach (get_users(["firstname", "lastname", "id"]) as $user) {
 $users = options($ulist, $selected=$data['assigned_to']);
 
 
-$typeList = ["bug" => "Bug", "proposal" => "Proposal", "task" => "Task"];
+$typeList = ["Bug" => "Bug", "Proposal" => "Proposal", "Task" => "Task"];
 $types = options($typeList, $selected=$data["type"]);
-$pList = ["minor" => "Minor", "major" => "Major", "critical" => "Critical"];
+$pList = ["Minor" => "Minor", "Major" => "Major", "Critical" => "Critical"];
 $priorities = options($pList, $selected=$data["priority"]);
 $action = "../php/create-issue.php";
 
