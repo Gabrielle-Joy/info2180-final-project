@@ -12,7 +12,7 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 -- CREATE USER "bugmeboss"@"localhost" IDENTIFIED BY 'Tr@cker123';
-GRANT ALL PRIVILEGES ON bugmedb.* TO "bugmeboss"@"localhost";
+GRANT ALL PRIVILEGES ON bugmedb.* TO 'bugmeboss'@'localhost' IDENTIFIED BY 'tracker';
 DROP DATABASE IF EXISTS bugmedb;
 CREATE DATABASE bugmedb;
 USE bugmedb;
