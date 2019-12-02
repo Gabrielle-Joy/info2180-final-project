@@ -40,9 +40,8 @@ $action = "../php/create-issue.php";
     <span class="error">* <?php echo $titleError;?></span>
     <br>
 
-    <label for="description">Description</label>
+    <label for="description">Description</label><br>
     <textarea name="description" id="description" cols="30" rows="10"><?=$data["description"]?></textarea>
-    <!-- <input type="text" id="description" name="description" value="<?=$data["description"]?>"> -->
     <span class="error">* <?php echo $descriptionError;?></span>
     <br>
 
