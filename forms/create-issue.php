@@ -41,7 +41,8 @@ $action = "../php/create-issue.php";
     <br>
 
     <label for="description">Description</label>
-    <input type="text" id="description" name="description" value="<?=$data["description"]?>">
+    <textarea name="description" id="description" cols="30" rows="10" value="<?=$data["description"]?>"></textarea>
+    <!-- <input type="text" id="description" name="description" value="<?=$data["description"]?>"> -->
     <span class="error">* <?php echo $descriptionError;?></span>
     <br>
 
