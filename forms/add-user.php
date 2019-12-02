@@ -10,6 +10,10 @@ if (isset($errors)) {
     $fnError = $lnError = $pError = $emError = "";
 }
 
+if (! isset($data)) {
+    $Fname=$Lname=$Pass=$Email="";
+}
+
 unset($errors);
 ?>
 
