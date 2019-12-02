@@ -1,6 +1,6 @@
 <?php
 
-require("connection.php");
+require_once("connection.php");
 
 $default_query = "SELECT * FROM users";
 
@@ -13,6 +13,7 @@ function get_users($fields) {
         }
     }    
 
-    $query = "SELECT {$fieldStr} FROM users WHERE id!=1";
+    // $query = "SELECT {$fieldStr} FROM users WHERE id!=1";
+    $query = "SELECT {$fieldStr} FROM users";
     return query($query, $many=true);
 }

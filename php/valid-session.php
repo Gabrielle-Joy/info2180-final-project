@@ -11,4 +11,8 @@
 		exit;
 	}
 	$_SESSION['timeout'] = time();
+
+	function storeErrors($errors) {
+		$_SESSION["errors"] = $errors;
+	}
 ?>
