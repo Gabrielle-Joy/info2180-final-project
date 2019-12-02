@@ -6,11 +6,10 @@ $basequery = "INSERT INTO issues (title, description, type, priority, status, as
                 VALUES (:title, :description, :type, :priority, :status, :assigned_to, :created_by, NOW(), NOW())";
 $statement = $conn->prepare($basequery);
 
-function handleRequest( ) {
-    global $statement;
+function handleRequest( $statement ) {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $data = array_filter($_POST);
-        $statement->bindParam(':title', $data["title"]);
+        // $statement->bindParam(':title', $data["title"]);
         $current_date = date("Y-m-d");
         $status = "Open";
 
@@ -28,7 +27,7 @@ function handleRequest( ) {
             */
         ];   
         
-        $statement->exec($params);
+        $statement->execute($params);
         header("Location: ../index.php");
 
     } else {
@@ -37,7 +36,7 @@ function handleRequest( ) {
     }
 }
 
-handleRequest();
+handleRequest($statement);
 
 ?>
 
