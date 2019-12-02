@@ -30,6 +30,7 @@ function handleRequest( $statement ) {
         var_dump($params);
         
         $statement->execute($params);
+        require("../forms/issue-success.php");
         // header("Location: ../index.php");
 
     } else {

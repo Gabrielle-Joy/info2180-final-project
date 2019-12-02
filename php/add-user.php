@@ -1,5 +1,6 @@
 <?php
 require("connection.php");
+require("valid-session.php");
 $basequery = "INSERT INTO users (firstname, lastname, password, email, date_joined)
                 VALUES (:firstname, :lastname, :password, :email, :date_joined)";
 $statement = $conn->prepare($basequery);
@@ -96,7 +97,10 @@ function storeErrors($errors) {
 }
 
 function wipeErrors(){
-    unset($_SESSION["errors"]);
+    if (isset($_SESSION["errors"])) {
+        unset($_SESSION["errors"]);
+    }
+    
 }
 
 function submit_info($conn){
