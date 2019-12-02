@@ -1,6 +1,6 @@
 <?php
 require("connection.php");
-require("valid-session.php");
+require_once("valid-session.php");
 $basequery = "INSERT INTO users (firstname, lastname, password, email, date_joined)
                 VALUES (:firstname, :lastname, :password, :email, :date_joined)";
 $statement = $conn->prepare($basequery);
@@ -77,18 +77,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     }
 }
 
-$data = json_decode(file_get_contents('php://input'), true);
-
-
 function data_input($data){
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
   return $data;
-}
-
-function storeErrors($errors) {
-    $_SESSION["errors"] = $errors;
 }
 
 function wipeErrors(){

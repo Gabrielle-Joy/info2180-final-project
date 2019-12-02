@@ -61,6 +61,7 @@ function validateIssue() {
     const assTo = $("#assTo").val();
     const type = $("#type").val();
     const priority = $("#priority").val();
+    console.log(priority);
 
     if (valid) {
         const url = "../php/create-issue.php";
@@ -69,7 +70,7 @@ function validateIssue() {
             "description": description,
             "assigned_to": assTo,
             "type": type,
-            "priotiy" : priority,
+            "priority" : priority,
         }
         display(url, body=data);
     }

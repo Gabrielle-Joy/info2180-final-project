@@ -43,8 +43,7 @@ CREATE TABLE issues (
   created_by int(11) NOT NULL,
   created datetime NOT NULL,
   updated datetime NOT NULL,
-  PRIMARY KEY  (id),
-  FOREIGN KEY (created_by) REFERENCES users(id)
+  PRIMARY KEY  (id)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO users (firstname, lastname, password, email, date_joined) VALUES ('Admin','Katy',md5('Password123'),'admin@bugme.com', '2019-11-20');

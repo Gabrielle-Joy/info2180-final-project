@@ -28,15 +28,22 @@ function th($heading) {
     return "<th>{$heading}</th>";
 }
 
-function options( $opList ) {
+function options( $opList, $selected="" ) {
     $result = option("", "-- select here --");
     foreach ($opList as $value => $msg) {
-        $result .= option($value, $msg);
+        if ( (string)$value === $selected) {
+            $result .= option($value, $msg, $selected=true);
+        } else {
+            $result .= option($value, $msg);
+        }
     }
     return $result;
 }
 
-function option( $value, $msg ) {
+function option( $value, $msg, $selected=false ) {
+    if ($selected) {
+        return "<option value={$value} selected>{$msg}</option>";
+    }
     return "<option value={$value}>{$msg}</option>";
 }
 

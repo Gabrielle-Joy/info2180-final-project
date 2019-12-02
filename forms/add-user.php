@@ -1,30 +1,21 @@
 <?php
-require("../php/valid-session.php");
+require_once("../php/valid-session.php");
 
-if (isset($_SESSION["errors"])) {
-    $fnError = $_SESSION["errors"]["firstname"];
-    $lnError = $_SESSION["errors"]["lastname"];
-    $pError = $_SESSION["errors"]["password"];
-    $emError = $_SESSION["errors"]["email"];  
+if (isset($errors)) {
+    $fnError = $errors["firstname"];
+    $lnError = $errors["lastname"];
+    $pError = $errors["password"];
+    $emError = $errors["email"];  
 } else {
     $fnError = $lnError = $pError = $emError = "";
 }
 
-if (isset($_SESSION["form"])) {
-    $Fname = $_SESSION["form"]["firstname"];
-    $Lname = $_SESSION["form"]["lastname"];
-    $Pass = $_SESSION["form"]["passowrd"];
-    $Email = $_SESSION["form"]["email"];
-}
-
-
-
-$action = "../php/add-user.php";
+unset($errors);
 ?>
 
 <h1>New User</h1>
 <p><span class="error">* required field</span></p>
-<form onsubmit="return validateUser()" action="">
+<form onsubmit="return validateUser()">
     Firstname<br>
     <input id="fname" type="text" name="Fname" value="<?php echo $Fname;?>">
     <span class="error">* <?php echo $fnError;?></span>
