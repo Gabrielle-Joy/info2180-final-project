@@ -73,7 +73,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     if(empty($fnError)&&empty($lnError)&&empty($pError)&&empty($emError)){
         wipeErrors();
         submit_info($conn);
-        header("Location: ../index.php");
+        require("../forms/user-success.php");
     } else {
         // display form 
         storeErrors($errors);
