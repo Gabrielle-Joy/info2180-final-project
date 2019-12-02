@@ -32,13 +32,15 @@ function addUser() {
 }
 
 function validateUser() {
-    console.log(this);
     let valid = true;
     const fname = $("#fname").val();
     const lname = $("#lname").val();
     const pass = $("#password").val();
     const email = $("#email").val();
 
+    //validate the inputs here
+
+    //if inputs are valid
     if (valid) {
         const url = "../php/add-user.php";
         const data = {
@@ -49,6 +51,29 @@ function validateUser() {
         };
         display(url, body=data);
     }
+    return false;
+}
+
+function validateIssue() {
+    let valid = true;
+    const title = $("#title").val();
+    const description = $("#description").val();
+    const assTo = $("#assTo").val();
+    const type = $("#type").val();
+    const priority = $("#priority").val();
+
+    if (valid) {
+        const url = "../php/create-issue.php";
+        const data = {
+            "title": title,
+            "description": description,
+            "assigned_to": assTo,
+            "type": type,
+            "priotiy" : priority
+        }
+        display(url, body=data);
+    }
+
     return false;
 }
 

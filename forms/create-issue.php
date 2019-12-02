@@ -19,7 +19,7 @@ $action = "../php/create-issue.php";
 ?>
 
 <h1>Create Issue</h1>
-<form action="<?=$action?>" onsubmit="return validate-issue()" method="post">
+<form onsubmit="return validateIssue()">
     <label for="title">Title</label>
     <input type="text" id="title" name="title">
     <br>

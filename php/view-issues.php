@@ -1,5 +1,5 @@
 <?php
-require("sessionTest.php");
+require("valid-session.php");
 require("connection.php");
 require("htmlBuilder.php");
 

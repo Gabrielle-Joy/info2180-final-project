@@ -1,5 +1,5 @@
 <?php
-require("php/sessionTest.php");
+require("php/valid-session.php");
 ?>
 
 <!DOCTYPE html>

@@ -1,5 +1,5 @@
 <?php
-require("sessionTest.php");
+require("valid-session.php");
 require("connection.php");
 
 /* One query is for getting all general info on an issue, including who it was assigned to.
