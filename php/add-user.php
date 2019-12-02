@@ -4,18 +4,13 @@ require("valid-session.php");
 $basequery = "INSERT INTO users (firstname, lastname, password, email, date_joined)
                 VALUES (:firstname, :lastname, :password, :email, :date_joined)";
 $statement = $conn->prepare($basequery);
-//$newquery="SELECT * from 'users'";
-$fnError=$lnError=$pError=$emError="";
 $Fname=$Lname=$Pass=$Email="";
 $errors = [
-    "firstname" => $fnError,
-    "lastname"  => $lnError,
-    "email"     => $pError,
-    "password"  => $emError
+    "firstname" => "",
+    "lastname"  => "",
+    "email"     => "",
+    "password"  => ""
 ];
-
-
-
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     if(empty($_POST["firstname"])){
@@ -71,7 +66,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             $Pass='';
         }
     }
-    if(empty($fnError)&&empty($lnError)&&empty($pError)&&empty($emError)){
+    if(empty($errors["firstname"])&&empty($errors["lastname"])&&empty($errors["password"])&&empty($errors["email"])){
         wipeErrors();
         submit_info($conn);
         require("../forms/user-success.php");
@@ -117,7 +112,5 @@ function submit_info($conn){
         ':date_joined'  => $current_date,
     ];
     $statement->execute($params);
-    // echo "<meta http-equiv='refresh' content='0'>";
-    // header("Location: ../index.php");
 }
 ?>
