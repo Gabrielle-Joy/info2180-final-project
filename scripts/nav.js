@@ -28,11 +28,11 @@ function createIssue() {
 
 function addUser() {
     const url = "../forms/add-user.php";
-    console.log("add user");
     display(url);
 }
 
 function validateUser() {
+    console.log(this);
     let valid = true;
     const fname = $("#fname").val();
     const lname = $("#lname").val();
@@ -49,6 +49,7 @@ function validateUser() {
         };
         display(url, body=data);
     }
+    return false;
 }
 
 function logout() {
@@ -62,7 +63,6 @@ async function display(url, body=null) {
     let data;
     if (body) {
         // POST request
-        // alert(body.JSON());
         data = await post(url, body);
     } else {
         // GET request
@@ -78,7 +78,7 @@ async function display(url, body=null) {
 
 async function post(url, pbody={}) {
     let result;
-    console.log("Post");
+    // console.log("Post");
     let fd = formData(pbody);
     alert(fd);
     await fetch(url, {

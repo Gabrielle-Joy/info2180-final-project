@@ -4,39 +4,39 @@ $basequery = "INSERT INTO users (firstname, lastname, password, email, date_join
                 VALUES (:firstname, :lastname, :password, :email, :date_joined)";
 $statement = $conn->prepare($basequery);
 //$newquery="SELECT * from 'users'";
+$fnError=$lnError=$pError=$emError="";
 $Fname=$Lname=$Pass=$Email="";
 $errors = [
-    "firstname" => "",
-    "lastname"  => "",
-    "email"     => "",
-    "password"  => ""
+    "firstname" => $fnError,
+    "lastname"  => $lnError,
+    "email"     => $pError,
+    "password"  => $emError
 ];
 
-$fnError=$lnError=$pError=$emError="";
 
-$contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     if(empty($_POST["firstname"])){
-        $fnError="Must Enter Your First Name";
+        $errors["firstname"]="Must Enter Your First Name";
     }
     else{
         $Fname=data_input($_POST["firstname"]);
         filter_var($Fname,FILTER_SANITIZE_STRING);
         if(!ctype_alpha($Fname)){
-        $Fname='';
-        $fnError="Only letters should be entered";
+            $Fname='';
+            $errors["firstname"]="Only letters should be entered";
         }
     }
     if(empty($_POST["lastname"])){
-        $lnError="Must Enter Your Last Name";
+        $errors["lasttname"]="Must Enter Your Last Name";
     }
     else{
         $Lname=data_input($_POST["lastname"]);
         filter_var($Lname,FILTER_SANITIZE_STRING);
         if(!ctype_alpha($Lname)){
-        $lnError="Only letters should be entered";
-        $Lname='';
+            $errors["lastname"]="Only letters should be entered";
+            $Lname='';
         }
     }
     if(empty($_POST["email"])){
@@ -48,37 +48,42 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         $stmt->execute([$Email]);
         $user=$stmt->fetch();
         if($user){
-        $emError="Email Already In Use Please Enter Another Email Address";
-        $Email='';
+            $errors["email"]="Email Already In Use Please Enter Another Email Address";
+            $Email='';
         }
         elseif(!filter_var($Email,FILTER_VALIDATE_EMAIL)){
-        $emError="Invalid Email Format Entered";
-        $Email='';
+            $errors["email"]="Invalid Email Format Entered";
+            $Email='';
         }
     }
     if(empty($_POST["password"])){
-        $pError="Must Enter a Password";
+        $errors["password"]="Must Enter a Password";
     }
     else{
         $Pass=data_input($_POST["password"]);
         if(strlen($_POST["password"])<8){
-        $pError="Password must have at least 8 characters and 1 Number and 1 Capital Letter";
-        $Pass='';
+            $errors["password"]="Password must have at least 8 characters and 1 Number and 1 Capital Letter";
+            $Pass='';
         }
         elseif (!preg_match("#.*^(?=.{8,})(?=.*[A-Z])(?=.*[0-9]).*$#",$Pass)){
-        $pError="Password must have at least 8 characters and 1 Number and 1 Capital Letter";
-        $Pass='';
+            $errors["password"]="Password must have at least 8 characters and 1 Number and 1 Capital Letter";
+            $Pass='';
         }
     }
     if(empty($fnError)&&empty($lnError)&&empty($pError)&&empty($emError)){
         wipeErrors();
         submit_info($conn);
+        header("Location: ../index.php");
     } else {
         // display form 
         storeErrors($errors);
         require("../forms/add-user.php");
     }
 }
+
+$data = json_decode(file_get_contents('php://input'), true);
+
+
 function data_input($data){
   $data = trim($data);
   $data = stripslashes($data);
@@ -103,7 +108,7 @@ function submit_info($conn){
     $params = [
         ':firstname'    => $data['firstname'],
         ':lastname'     => $data['lastname'],
-        ':password'     => $pass_hash,
+        ':password'     => $pass_hash,  
         ':email'        => $data['email'],
         ':date_joined'  => $current_date,
     ];
@@ -112,5 +117,3 @@ function submit_info($conn){
     // header("Location: ../index.php");
 }
 ?>
-
-<h1> ERROR </h1>

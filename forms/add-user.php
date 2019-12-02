@@ -23,7 +23,7 @@ $action = "../php/add-user.php";
 
 <h1>New User</h1>
 <p><span class="error">* required field</span></p>
-<form onsubmit="validateUser()">
+<form onsubmit="return validateUser()" action="">
     Firstname<br>
     <input id="fname" type="text" name="Fname" value="<?php echo $Fname;?>">
     <span class="error">* <?php echo $fnError;?></span>
