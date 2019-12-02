@@ -26,7 +26,7 @@ function handleRequest( $statement ) {
 
         if (validate($data)) {
             $current_date = date("Y-m-d");
-            $status = "Open";
+            $status = "OPEN";
 
             $params = [
                 ':title'        => $data['title'],
@@ -37,7 +37,7 @@ function handleRequest( $statement ) {
                 ':assigned_to'  => $data['assigned_to'],
                 ':created_by'   => $_SESSION['user']
             ];   
-                        
+
             $statement->execute($params);
             require("../forms/issue-success.php");
         } else {
