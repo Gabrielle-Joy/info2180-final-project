@@ -13,6 +13,10 @@ if (isset($errors)) {
     $titleError = $descriptionError = $priorityError = $typeError = $assignedToError = "";
 }
 
+if (! isset($data)) {
+    $data["title"] = $data["description"] = $data["type"] = $data["assigned_to"] = $data["priority"] = "";
+}
+
 // get users for select field
 $ulist = [];
 foreach (get_users(["firstname", "lastname", "id"]) as $user) {
