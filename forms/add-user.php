@@ -1,4 +1,5 @@
 <?php
+require("../php/valid-session.php");
 
 if (isset($_SESSION["errors"])) {
     $fnError = $_SESSION["errors"]["firstname"];

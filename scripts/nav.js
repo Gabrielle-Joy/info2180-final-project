@@ -69,7 +69,7 @@ function validateIssue() {
             "description": description,
             "assigned_to": assTo,
             "type": type,
-            "priotiy" : priority
+            "priotiy" : priority,
         }
         display(url, body=data);
     }
@@ -94,7 +94,6 @@ async function display(url, body=null) {
         data = await get(url);
     }
     if(data) {
-        // console.log(data);
         $("main").html(data);
     } else {
         console.error("request failed");
@@ -103,9 +102,7 @@ async function display(url, body=null) {
 
 async function post(url, pbody={}) {
     let result;
-    // console.log("Post");
     let fd = formData(pbody);
-    alert(fd);
     await fetch(url, {
         method: 'POST',
         body: fd
@@ -113,7 +110,6 @@ async function post(url, pbody={}) {
     .then(response => response.text())
     .then(data => result = data )
     .catch(error => console.error(error));
-    // console.log(result);
     return result;
 }
 
