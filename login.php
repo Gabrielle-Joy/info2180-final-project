@@ -56,7 +56,8 @@
                     $_SESSION['user'] = $result[0]['id'];  
                     if( $email == "admin@bugme.com") {
                         $_SESSION['session_type'] = 'admin';
-                    }                      
+                    } else
+                    $_SESSION['session_type'] = 'other';                 
                     header("Location: index.php");
                     exit;
                 } else {

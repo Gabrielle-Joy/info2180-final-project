@@ -14,4 +14,5 @@ Once logged in to index.php, all requested data are asynchronously loaded.
 
 ### Admin Account:
 Email: admin@bugme.com  
-Password: Password123 (The 'p' was capitalized to conform with the stated password requirements of a user).
+Password: Password123 (The 'p' was capitalized to conform with the stated password requirements of a user).  
+**Note:** Only the admin account can add users in this design.
