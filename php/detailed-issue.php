@@ -37,28 +37,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 ?>
 
-<div>
-    <h1><?=$title?></h1>
-    <h4>Issue #<?=$id?></h4>
-</div>
-<div>
-    <p id="desc"><?=$desc?></p>
-    <ul>
-        <li>Issue Created on <?=$created?> by <?=$createdBy?></li>
-        <li>Last Updated on <?=$updated?></li>
-    </ul>
-</div>
-<div>
-    <p><strong>Assigned To</strong></p>
-    <p><?=$assignedTo?></p>
-    <p><strong>Type</strong></p>
-    <p><?=$type?></p>
-    <p><strong>Priority</strong></p>
-    <p><?=$priority?></p>
-    <p><strong>Status</strong></p>
-    <p><?=$status?></p>
-</div>
-<div>
-    <button onclick="updateIssue(<?=$id?>, 'CLOSED')">Mark as Closed</button>
-    <button onclick="updateIssue(<?=$id?>, 'IN PROGRESS')">Mark as In Progress</button>
+<head>
+    <link rel="stylesheet" href="styles/detailedIssue.css">
+</head>
+<div id="d-main">
+    <div id="d-title">
+        <h1><?=$title?></h1>
+        <h4>Issue #<?=$id?></h4>
+    </div>
+    <div id="d-desc">
+        <p id="desc"><?=$desc?></p>
+        <ul>
+            <li>Issue Created on <?=$created?> by <?=$createdBy?></li>
+            <li>Last Updated on <?=$updated?></li>
+        </ul>
+    </div>
+    <div id="d-stats">
+        <h4>Assigned To</h4>
+        <p><?=$assignedTo?></p>
+        <h4>Type</h4>
+        <p><?=$type?></p>
+        <h4>Priority</h4>
+        <p><?=$priority?></p>
+        <h4>Status</h4>
+        <p><?=$status?></p>
+    </div>
+    <div id="d-buttons">
+        <button id="btn-closed" onclick="updateIssue(<?=$id?>, 'CLOSED')">Mark as Closed</button>
+        <button id="btn-inProg" onclick="updateIssue(<?=$id?>, 'IN PROGRESS')">Mark as In Progress</button>
+    </div>
 </div>

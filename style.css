@@ -5,6 +5,10 @@
     word-wrap: break-word;
 }
 
+body {
+    margin: 0;
+}
+
 .grid-container {
     display: grid;
     grid-gap: 0px;
@@ -17,7 +21,7 @@
 header {
     /* grid-area: 1 / 1 / span 1 / span 3; */
     grid-area: header;
-    background-color: black;
+    background-color: #272932;
     padding: 10px;
     color: white;
 }
@@ -25,7 +29,7 @@ header {
 nav {
     /* grid-area: 2 / 1 / span 3 / span 1; */
     grid-area: nav;
-    background-color: #D5DFEF;
+    background-color: #ded9e2;
     /* margin: 10px; */
     /* margin-left: 10px; */
     min-height: 80vh;
@@ -54,8 +58,9 @@ nav > ul > li {
 
 main {
     grid-area: main;
-    margin-left: 1.5em;
+    padding-left: 1.5em;
     padding-right: 10px;
+    background-color: #f7f4ea;
 }
 
 ul li {
@@ -102,3 +107,7 @@ tr:not(:first-child):hover {background-color: #f5f5f5;}
 }
 
 .error {color: #FF0000;}
+
+#header i {
+    width: 25px;
+}

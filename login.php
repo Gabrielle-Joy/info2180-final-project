@@ -81,7 +81,7 @@
             </li>
         </ul>
     </header>
-    <main>
+    <main id="main-login">
     <div id="login">
         <form action="login.php" onsubmit="return login_check(this.password)" method="POST">
             <h2>Login</h2>
