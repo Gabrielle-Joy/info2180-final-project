@@ -63,6 +63,7 @@ ul li {
 table {
     border-collapse: collapse;
     width: 100%;
+    table-layout: fixed;
 }
   
 th, td {
@@ -72,5 +73,30 @@ th, td {
 }
 
 tr:not(:first-child):hover {background-color: #f5f5f5;}
+
+/* Setting table widths */
+#TicketID {
+    width: 12%;
+}
+
+#Title {
+    width: 39%;
+}
+
+#Type {
+    width: 8.5%;
+}
+
+#Status {
+    width: 12%;
+}
+
+#AssignedTo {
+    width: 12%;
+}
+
+#Created {
+    width: 12%;
+}
 
 .error {color: #FF0000;}

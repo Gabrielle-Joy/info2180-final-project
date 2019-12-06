@@ -3,7 +3,8 @@
 function table_headings($headings, $classY="") {
     $table_headings = "";
     foreach( $headings as $heading ) {
-        $table_headings .= th($heading);
+        $id = preg_replace('/\s+/', '', $heading);
+        $table_headings .= th($heading, $id);
     }
     return tr($table_headings, "", $class=$classY);
 }
@@ -24,8 +25,8 @@ function td($row_cell) {
     return "<td>{$row_cell}</td>";
 }
 
-function th($heading) {
-    return "<th>{$heading}</th>";
+function th($heading, $id="") {
+    return "<th id='$id'>{$heading}</th>";
 }
 
 function options( $opList, $selected="" ) {
