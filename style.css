@@ -16,6 +16,7 @@ body {
     grid-template-areas: 'header header header header'
                          'nav    main   main   main';
     padding: 10px;
+    /* min-height: 100vh; */
 }
 
 header {
