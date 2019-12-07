@@ -62,33 +62,45 @@ function validate($dt) {
     if ( $title ){
         $errors["title"] = "Must enter title";
         $data["title"] = "";
-    }
+    } else
+        $data["title"] = data_input($data["title"]);
 
     $description = empty($data["description"]);
     if ( $description ){
         $errors["description"] = "Must enter description";
         $data["description"] = "";
-    }
+    } else
+        $data["description"] = data_input($data["description"]);
 
     $type = empty($data["type"]);
     if ( $type ){
         $errors["type"] = "Must select a type";
         $data["type"] = "";
-    }
+    } else
+        $data["type"] = data_input($data["type"]);
 
     $priority = empty($data["priority"]);
     if ( $priority ){
         $errors["priority"] = "Must select a priority";
         $data["priority"] = "";
-    }
+    } else
+        $data["priority"] = data_input($data["priority"]);
 
     $assigned_to = empty($data["assigned_to"]);
     if ( $assigned_to ){
         $errors["assignedTo"] = "Must assign user to issue";
         $data["assigned_to"] = "";
-    }
+    }else
+        $data["assigned_to"] = data_input($data["assigned_to"]);
 
     return !($title || $description || $type || $priority || $assigned_to);
+}
+
+function data_input($data){
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
 }
 
 handleRequest($statement);
