@@ -8,16 +8,14 @@ if (isset($errors)) {
     $emError = $errors["email"];  
 } else {
     $fnError = $lnError = $pError = $emError = "";
-}
-
-if (! isset($data)) {
     $Fname=$Lname=$Pass=$Email="";
 }
+
 
 unset($errors);
 ?>
 
-<h1>New User</h1>
+<h1>Add User</h1>
 <p><span class="error">* required field</span></p>
 <form onsubmit="return validateUser()">
     Firstname<br>

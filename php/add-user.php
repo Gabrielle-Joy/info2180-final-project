@@ -4,7 +4,7 @@ require_once("valid-session.php");
 $basequery = "INSERT INTO users (firstname, lastname, password, email, date_joined)
                 VALUES (:firstname, :lastname, :password, :email, :date_joined)";
 $statement = $conn->prepare($basequery);
-$Fname=$Lname=$Pass=$Email="";
+// $Fname=$Lname=$Pass=$Email="";
 $errors = [
     "firstname" => "",
     "lastname"  => "",
@@ -13,32 +13,37 @@ $errors = [
 ];
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
-    if(empty($_POST["firstname"])){
+    if(empty($_POST["firstname"])) {
         $errors["firstname"]="Must Enter Your First Name";
-    }
-    else{
+        $Fname='';
+    } else {
         $Fname=data_input($_POST["firstname"]);
         filter_var($Fname,FILTER_SANITIZE_STRING);
         if(!ctype_alpha($Fname)){
-            $Fname='';
+            // $Fname='';
             $errors["firstname"]="Only letters should be entered";
         }
     }
+
     if(empty($_POST["lastname"])){
-        $errors["lasttname"]="Must Enter Your Last Name";
-    }
-    else{
+        $errors["lastname"]="Must Enter Your Last Name";
+        $Lname='';
+    } else {
         $Lname=data_input($_POST["lastname"]);
         filter_var($Lname,FILTER_SANITIZE_STRING);
         if(!ctype_alpha($Lname)){
             $errors["lastname"]="Only letters should be entered";
-            $Lname='';
+            // $Lname='';
         }
     }
+
     if(empty($_POST["email"])){
-        $emError="Must Enter Your Email";
-    }
-    else{
+        $errors["email"]="Must Enter Your Email";
+        $Email='';
+    } elseif(!filter_var($_POST["email"],FILTER_VALIDATE_EMAIL)) {
+        $errors["email"]="Invalid Email Format Entered";
+        $Email=data_input($_POST["email"]);;
+    } else {
         $Email=data_input($_POST["email"]);
         $stmt=$conn->prepare("SELECT * FROM users WHERE email=?");
         $stmt->execute([$Email]);
@@ -47,13 +52,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             $errors["email"]="Email Already In Use Please Enter Another Email Address";
             $Email='';
         }
-        elseif(!filter_var($Email,FILTER_VALIDATE_EMAIL)){
-            $errors["email"]="Invalid Email Format Entered";
-            $Email='';
-        }
+        
     }
     if(empty($_POST["password"])){
         $errors["password"]="Must Enter a Password";
+        $Pass='';
     }
     else{
         $Pass=data_input($_POST["password"]);
@@ -67,7 +70,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         }
     }
     if(empty($errors["firstname"])&&empty($errors["lastname"])&&empty($errors["password"])&&empty($errors["email"])){
-        wipeErrors();
+        // wipeErrors();
         submit_info($conn);
         require("../forms/user-success.php");
     } else {

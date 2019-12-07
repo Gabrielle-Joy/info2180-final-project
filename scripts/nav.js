@@ -25,7 +25,7 @@ function updateIssue(id, update){
     let url = "../php/update-issue.php";
     let data = {'id': id, 'update': update}
     console.log(url);
-    console.log("Let's Roll");
+    // console.log("Let's Roll");
     fetch(url,{
         method: 'POST',
         body: JSON.stringify(data)
@@ -73,7 +73,7 @@ function validateIssue() {
     const assTo = $("#assTo").val();
     const type = $("#type").val();
     const priority = $("#priority").val();
-    console.log(priority);
+    // console.log(priority);
 
     if (valid) {
         const url = "../php/create-issue.php";

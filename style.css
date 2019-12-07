@@ -15,7 +15,7 @@ body {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-areas: 'header header header header'
                          'nav    main   main   main';
-    padding: 10px;
+    /* padding: 10px; */
     /* min-height: 100vh; */
 }
 
@@ -33,7 +33,7 @@ nav {
     background-color: #ded9e2;
     /* margin: 10px; */
     /* margin-left: 10px; */
-    min-height: 80vh;
+    min-height: 90vh;
 }
 
 nav > ul {

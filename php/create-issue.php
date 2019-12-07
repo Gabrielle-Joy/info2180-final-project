@@ -15,11 +15,14 @@ $errors = [
     "description"  => "",
     "type"     => "",
     "priority"  => "",
-    "assigned_to"  => "",
+    "assignedTo"  => "",
 ];
+
+$data;
 
 function handleRequest( $statement ) {
     global $errors;
+    global $data;
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $data = array_filter($_POST);
         // $statement->bindParam(':title', $data["title"]);
@@ -51,32 +54,38 @@ function handleRequest( $statement ) {
     }
 }
 
-function validate($data) {
+function validate($dt) {
     // title
     global $errors;
+    global $data;
     $title = empty($data["title"]);
     if ( $title ){
         $errors["title"] = "Must enter title";
+        $data["title"] = "";
     }
 
     $description = empty($data["description"]);
     if ( $description ){
         $errors["description"] = "Must enter description";
+        $data["description"] = "";
     }
 
     $type = empty($data["type"]);
     if ( $type ){
         $errors["type"] = "Must select a type";
+        $data["type"] = "";
     }
 
     $priority = empty($data["priority"]);
     if ( $priority ){
         $errors["priority"] = "Must select a priority";
+        $data["priority"] = "";
     }
 
     $assigned_to = empty($data["assigned_to"]);
     if ( $assigned_to ){
         $errors["assignedTo"] = "Must assign user to issue";
+        $data["assigned_to"] = "";
     }
 
     return !($title || $description || $type || $priority || $assigned_to);
